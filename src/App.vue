@@ -30,7 +30,7 @@
         <template v-for="field in Object.keys(entry)" :key="field">
             <div>
                 <template v-if="field == 'osStr'">
-                    {{ field }}: 
+                    <code>{{ field }}</code>: 
                     <select v-model="entry.osStr">
                         <option v-for="option in osStrArr" :key="option">
                             {{ option }}
@@ -38,7 +38,7 @@
                     </select>
                 </template>
                 <template v-else-if="field == 'deviceMap' && showDeviceMaps">
-                    {{ field }}:
+                    <code>{{ field }}</code>:
                     <ul style="line-height: 1.7em;">
                         <li v-if="this.appledb">Filter selection: <select v-model="deviceTypeFilter">
                             <option v-for="option in deviceTypeArr" :key="option">
@@ -53,25 +53,22 @@
                                     </option>
                                 </select>
                             </template>
-                            <input v-else v-model="entry.deviceMap[index]"/> <a v-on:click="entry.deviceMap = entry.deviceMap.filter((x, i) => i != index)">X</a>
+                            <input v-else v-model="entry.deviceMap[index]"/> <a v-on:click="entry.deviceMap = entry.deviceMap.filter((x, i) => i != index)"><i class="fa-solid fa-x" style="padding-inline: 4px;"></i></a>
                         </li>
                         <li><a v-on:click="entry.deviceMap.push('')">Add device</a></li>
                     </ul>
                 </template>
                 <template v-else-if="['sources','fieldToAdd'].includes(field)"></template>
                 <template v-else>
-                    {{ field }}: <input v-model="entry[field]"/> <a v-if="![
+                    <code>{{ field }}</code>: <input v-model="entry[field]"/> <a v-if="![
                         'osStr',
-                        'version',
-                        'build',
-                        'released',
-                        'deviceMap'
-                    ].includes(field)" v-on:click="delete entry[field]">X</a>
+                        'build'
+                    ].includes(field)" v-on:click="delete entry[field]" style="padding-inline: 4px;"><i class="fa-solid fa-x"></i></a>
                 </template>
             </div>
         </template>
-        <p style="margin-top: 4px;">Add field: <input v-model="entry.fieldToAdd"/> <a v-on:click="entry.fieldToAdd.length ? entry[entry.fieldToAdd] = '' : false">+</a></p>
-        <p style="margin-top: 1em;"><a v-on:click="entries = entries.filter((x, i) => index != i)">Remove entry</a></p>
+        <p style="margin-top: 1em;"><input v-model="entry.fieldToAdd"/> <a v-on:click="entry.fieldToAdd.length ? entry[entry.fieldToAdd] = '' : false" style="padding-inline: 2px;"><i class="fa-solid fa-plus"></i></a></p>
+        <p style="margin-top: .5em;"><a v-on:click="entries = entries.filter((x, i) => index != i)">Remove entry</a></p>
     </div>
 
     <div class="btnWrapper">
