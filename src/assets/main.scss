@@ -1,0 +1,35 @@
+@import './base.scss';
+@import './btn.scss';
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: .3em;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-block: .7em;
+  padding-bottom: .3em;
+  border-bottom: 1px solid var(--c-border);
+}
+
+a {
+  cursor: pointer;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
