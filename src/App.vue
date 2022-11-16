@@ -138,6 +138,11 @@ export default {
                     type: 'beta'
                 },
                 {
+                    osStr: 'iPadOS',
+                    version: '16',
+                    type: 'beta'
+                },
+                {
                     osStr: 'macOS',
                     version: '13',
                     type: 'beta'
@@ -176,6 +181,11 @@ export default {
                     type: 'RC'
                 },
                 {
+                    osStr: 'iPadOS',
+                    version: '16',
+                    type: 'RC'
+                },
+                {
                     osStr: 'macOS',
                     version: '13',
                     type: 'RC'
@@ -210,6 +220,11 @@ export default {
                 },
                 {
                     osStr: 'iOS',
+                    version: '16',
+                    type: 'stable'
+                },
+                {
+                    osStr: 'iPadOS',
                     version: '16',
                     type: 'stable'
                 },
