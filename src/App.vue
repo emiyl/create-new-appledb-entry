@@ -252,26 +252,35 @@ export default {
                 .then(data => this.deviceTypeArr = [...new Set(this.appledb.device.map(x => x.type))])
         },
         createPresets(preset) {
-            this.entries.push(...preset.map(p => {
-                const beta = ['beta','RC'].includes(p.type)
+            this.entries = preset.map(p => {
                 const recentVersion = this.appledb.ios.filter(os =>
                     os.osStr == p.osStr &&
                     os.version.startsWith(p.version) &&
-                    os.beta == beta
+                    !os.rsr &&
+                    (
+                        ((p.type == 'beta') && os.beta) ||
+                        ((p.type == 'RC') && os.rc) ||
+                        ((p.type == 'stable') && !(os.beta || os.rc))
+                    )
                 ).sort((a,b) => {
                     const date = [a,b].map(x => new Date(x.released))
                     if (date[0] < date[1]) return 1
                     if (date[0] > date[1]) return -1
                     return 0
                 })[0]
-                if (!recentVersion) return null
+                if (!recentVersion) return
 
                 let retVersion = ''
                 
-                if (p.type == 'beta' || (p.type == 'RC' && recentVersion.version.includes('RC'))) {
+                if (p.type == 'beta' || (p.type == 'RC' && recentVersion.rc)) {
                     let versionNum = recentVersion.version.split(' ')[0]
                     let iteration = recentVersion.version.split(' ')[2]
-                    iteration++
+                    if (iteration) iteration++
+                    else {
+                        let versionNumArr = versionNum.split('.')
+                        versionNumArr[versionNumArr.length-1]++
+                        versionNum = versionNumArr.join('.')
+                    }
 
                     retVersion = [versionNum, p.type, iteration].join(' ')
                 } else if (p.type == 'RC') {
@@ -279,6 +288,8 @@ export default {
                     retVersion = [versionNum, p.type].join(' ')
                 } else {
                     let versionNumArr = recentVersion.version.split('.')
+                    versionNumArr[versionNumArr.length-1]++
+
                     retVersion = versionNumArr.join('.')
                 }
 
@@ -290,7 +301,7 @@ export default {
                     deviceMap: recentVersion.deviceMap,
                     fieldToAdd: ''
                 }
-            }))
+            }).filter(x => x)
         },
         download(path, filename) {
             const anchor = document.createElement('a')
