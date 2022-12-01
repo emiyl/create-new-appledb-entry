@@ -317,7 +317,7 @@ export default {
             validEntries.map(x => {
                 const entry = {...x}
                 delete entry.fieldToAdd
-                const fileContent = JSON.stringify(entry, null, 2)
+                const fileContent = JSON.stringify(entry, null, 4)
                 const blob = new Blob([fileContent], { type: 'application/json' })
                 const url = URL.createObjectURL(blob)
                 this.download(url, (validEntries.filter(y => y.build == x.build).length > 1 ? x.osStr + '-' : '') + x.build + '.json')
