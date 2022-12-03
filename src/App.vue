@@ -37,6 +37,14 @@
                         </option>
                     </select>
                 </template>
+                <template v-else-if="field == 'beta' || field == 'rc'">
+                    <code>{{ field }}</code>:
+                    <select v-model="entry[field]">
+                        <option v-for="option in [true,false]" :key="option" :value="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                </template>
                 <template v-else-if="field == 'deviceMap' && showDeviceMaps">
                     <code>{{ field }}</code>:
                     <ul style="line-height: 1.7em;">
@@ -298,6 +306,8 @@ export default {
                     version: retVersion,
                     build: '',
                     released: new Date().toISOString().slice(0,10),
+                    beta: p.type == 'beta',
+                    rc: p.type == 'RC',
                     deviceMap: recentVersion.deviceMap,
                     fieldToAdd: ''
                 }
@@ -312,7 +322,11 @@ export default {
             document.body.removeChild(anchor)
         },
         downloadEntries() {
-            const validEntries = this.entries.filter(x => x.osStr && x.build)
+            const validEntries = this.entries.filter(x => x.osStr && x.build).map(x => {
+                if (!x.beta) delete x.beta
+                if (!x.rc) delete x.rc
+                return x
+            })
             
             validEntries.map(x => {
                 const entry = {...x}
