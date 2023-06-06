@@ -133,8 +133,23 @@ export default {
                     type: 'RC'
                 },
                 {
+                    osStr: 'macOS',
+                    version: '13',
+                    type: 'beta'
+                },
+                {
+                    osStr: 'macOS',
+                    version: '14',
+                    type: 'beta'
+                },
+                {
                     osStr: 'watchOS',
                     version: '9',
+                    type: 'beta'
+                },
+                {
+                    osStr: 'watchOS',
+                    version: '10',
                     type: 'beta'
                 },
                 {
@@ -143,13 +158,18 @@ export default {
                     type: 'beta'
                 },
                 {
+                    osStr: 'iOS',
+                    version: '17',
+                    type: 'beta'
+                },
+                {
                     osStr: 'iPadOS',
                     version: '16',
                     type: 'beta'
                 },
                 {
-                    osStr: 'macOS',
-                    version: '13',
+                    osStr: 'iPadOS',
+                    version: '17',
                     type: 'beta'
                 },
                 {
@@ -158,8 +178,18 @@ export default {
                     type: 'beta'
                 },
                 {
+                    osStr: 'tvOS',
+                    version: '17',
+                    type: 'beta'
+                },
+                {
                     osStr: 'audioOS',
                     version: '16',
+                    type: 'beta'
+                },
+                {
+                    osStr: 'audioOS',
+                    version: '17',
                     type: 'beta'
                 }
             ],
@@ -176,8 +206,23 @@ export default {
                     type: 'RC'
                 },
                 {
+                    osStr: 'macOS',
+                    version: '13',
+                    type: 'RC'
+                },
+                {
+                    osStr: 'macOS',
+                    version: '14',
+                    type: 'RC'
+                },
+                {
                     osStr: 'watchOS',
                     version: '9',
+                    type: 'RC'
+                },
+                {
+                    osStr: 'watchOS',
+                    version: '10',
                     type: 'RC'
                 },
                 {
@@ -186,13 +231,18 @@ export default {
                     type: 'RC'
                 },
                 {
+                    osStr: 'iOS',
+                    version: '17',
+                    type: 'RC'
+                },
+                {
                     osStr: 'iPadOS',
                     version: '16',
                     type: 'RC'
                 },
                 {
-                    osStr: 'macOS',
-                    version: '13',
+                    osStr: 'iPadOS',
+                    version: '17',
                     type: 'RC'
                 },
                 {
@@ -201,8 +251,18 @@ export default {
                     type: 'RC'
                 },
                 {
+                    osStr: 'tvOS',
+                    version: '17',
+                    type: 'RC'
+                },
+                {
                     osStr: 'audioOS',
                     version: '16',
+                    type: 'RC'
+                },
+                {
+                    osStr: 'audioOS',
+                    version: '17',
                     type: 'RC'
                 }
             ],
@@ -219,8 +279,23 @@ export default {
                     type: 'stable'
                 },
                 {
+                    osStr: 'macOS',
+                    version: '13',
+                    type: 'stable'
+                },
+                {
+                    osStr: 'macOS',
+                    version: '14',
+                    type: 'stable'
+                },
+                {
                     osStr: 'watchOS',
                     version: '9',
+                    type: 'stable'
+                },
+                {
+                    osStr: 'watchOS',
+                    version: '10',
                     type: 'stable'
                 },
                 {
@@ -229,13 +304,18 @@ export default {
                     type: 'stable'
                 },
                 {
+                    osStr: 'iOS',
+                    version: '17',
+                    type: 'stable'
+                },
+                {
                     osStr: 'iPadOS',
                     version: '16',
                     type: 'stable'
                 },
                 {
-                    osStr: 'macOS',
-                    version: '13',
+                    osStr: 'iPadOS',
+                    version: '17',
                     type: 'stable'
                 },
                 {
@@ -244,8 +324,18 @@ export default {
                     type: 'stable'
                 },
                 {
+                    osStr: 'tvOS',
+                    version: '17',
+                    type: 'stable'
+                },
+                {
                     osStr: 'audioOS',
                     version: '16',
+                    type: 'stable'
+                },
+                {
+                    osStr: 'audioOS',
+                    version: '17',
                     type: 'stable'
                 }
             ]
