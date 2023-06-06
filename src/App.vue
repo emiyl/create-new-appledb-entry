@@ -67,6 +67,13 @@
                     </ul>
                 </template>
                 <template v-else-if="['sources','fieldToAdd'].includes(field)"></template>
+                <template v-else-if="field == 'appledbWebImage'">
+                    <code>{{ field }}</code>:
+                    <ul style="list-style-type: none; padding-left: 1em;">
+                        <li><code>id</code>: <input v-model="entry[field].id"/></li>
+                        <li><code>align</code>: <input v-model="entry[field].align"/></li>
+                    </ul>
+                </template>
                 <template v-else>
                     <code>{{ field }}</code>: <input v-model="entry[field]"/> <a v-if="![
                         'osStr',
@@ -391,16 +398,21 @@ export default {
                     retVersion = versionNumArr.join('.')
                 }
 
-                return {
+                let ret = {
                     osStr: p.osStr,
                     version: retVersion,
                     build: '',
                     released: new Date().toISOString().slice(0,10),
                     beta: p.type == 'beta',
-                    rc: p.type == 'RC',
-                    deviceMap: recentVersion.deviceMap,
-                    fieldToAdd: ''
+                    rc: p.type == 'RC'
                 }
+
+                if (recentVersion.appledbWebImage) ret.appledbWebImage = recentVersion.appledbWebImage
+
+                ret.deviceMap = recentVersion.deviceMap
+                ret.fieldToAdd = ''
+
+                return ret
             }).filter(x => x)
         },
         download(path, filename) {
